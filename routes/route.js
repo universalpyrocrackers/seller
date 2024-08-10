@@ -148,13 +148,16 @@ if(data.length!=0){
   //adding product to  table
 router.post("/addTableProduct",(req,res)=>{
   var query={"_id":req.body.category};
+ // https://docs.google.com/uc?id=1Xcn_MBnxBgNPU7t88yPzEfADZX_2Y1HL
+//  req.body.image.split("id=")[1]
   let newproduct=new products({ 
   name:req.body.name,
   price:req.body.price,
   discountpercent:req.body.discountpercent,
   disprice:req.body.disprice,
   disamount:req.body.disamount,
-  image:req.body.image,
+ // image:req.body.image,
+    image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
   available:req.body.available,
   brand:req.body.brand,
   category:req.body.category,
