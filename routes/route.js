@@ -1048,7 +1048,7 @@ router.delete("/removecategory/:id",(req,res)=>{
 // edit category 
 router.put("/editcategory/:id",(req,res)=>{
   let query={"_id":req.params.id};
-     var newvalues = { $set:{ "imageurl":imageurl:"https://drive.google.com/thumbnail?id="+req.body.imageurl.split("id=")[1],"catname":req.body.catname,"position":req.body.position,"active":req.body.active}};
+     var newvalues = { $set:{ "imageurl":"https://drive.google.com/thumbnail?id="+req.body.imageurl.split("id=")[1],"catname":req.body.catname,"position":req.body.position,"active":req.body.active}};
      categorys.updateOne(query, newvalues,(err,result)=>{
         if(err){
             res.json({result});
