@@ -1089,7 +1089,8 @@ ord.deleteOne(query,(err,data)=>{
 // add brand
 router.post("/addbrand",(req,res)=>{
   let newbrand=new brands({
-    image:req.body.image,
+   // image:req.body.image,
+    image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
     name:req.body.name,
     position:req.body.position
   })
@@ -1115,7 +1116,7 @@ router.get("/getbrand",(req,res)=>{
 //edit video url
 router.put("/editbrand/:id",(req,res)=>{
   let query={"_id":req.params.id};
-     var newvalues = { $set:{ "image":req.body.image,"name":req.body.name,"position":req.body.position}};
+     var newvalues = { $set:{ "image":"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],"name":req.body.name,"position":req.body.position}};
      brands.updateOne(query, newvalues,(err,result)=>{
         if(err){
             res.json({result});
