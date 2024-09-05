@@ -156,8 +156,8 @@ router.post("/addTableProduct",(req,res)=>{
   discountpercent:req.body.discountpercent,
   disprice:Math.round(req.body.disprice),
   disamount:req.body.disamount,
- // image:req.body.image,
-    image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
+  image:req.body.image,
+   // image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
   available:req.body.available,
   brand:req.body.brand,
   category:req.body.category,
@@ -203,8 +203,8 @@ router.put("/editTableProduct/:id",(req,res)=>{
         discountpercent:req.body.discountpercent,
         disprice:Math.round(req.body.disprice),
         disamount:req.body.disamount,
-      //  image:req.body.image,
-        image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
+        image:req.body.image,
+     //   image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
         available:req.body.available,
         brand:req.body.brand,
         category:req.body.category,
@@ -1012,8 +1012,8 @@ router.get("/categorylists",(req,res)=>{
 // add category 
 router.post("/addcategory",(req,res)=>{
   let newcategory=new categorys({
-   // imageurl:req.body.imageurl,
-    imageurl:"https://drive.google.com/thumbnail?id="+req.body.imageurl.split("id=")[1],
+    imageurl:req.body.imageurl,
+   // imageurl:"https://drive.google.com/thumbnail?id="+req.body.imageurl.split("id=")[1],
     catname:req.body.catname,
     qty:0,
     position:req.body.position,
@@ -1048,7 +1048,7 @@ router.delete("/removecategory/:id",(req,res)=>{
 // edit category 
 router.put("/editcategory/:id",(req,res)=>{
   let query={"_id":req.params.id};
-     var newvalues = { $set:{ "imageurl":"https://drive.google.com/thumbnail?id="+req.body.imageurl.split("id=")[1],"catname":req.body.catname,"position":req.body.position,"active":req.body.active}};
+     var newvalues = { $set:{ "imageurl":req.body.imageurl,"catname":req.body.catname,"position":req.body.position,"active":req.body.active}};
      categorys.updateOne(query, newvalues,(err,result)=>{
         if(err){
             res.json({result});
@@ -1091,8 +1091,8 @@ ord.deleteOne(query,(err,data)=>{
 // add brand
 router.post("/addbrand",(req,res)=>{
   let newbrand=new brands({
-   // image:req.body.image,
-    image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
+    image:req.body.image,
+  //  image:"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],
     name:req.body.name,
     position:req.body.position
   })
@@ -1118,7 +1118,7 @@ router.get("/getbrand",(req,res)=>{
 //edit video url
 router.put("/editbrand/:id",(req,res)=>{
   let query={"_id":req.params.id};
-     var newvalues = { $set:{ "image":"https://drive.google.com/thumbnail?id="+req.body.image.split("id=")[1],"name":req.body.name,"position":req.body.position}};
+     var newvalues = { $set:{ "image":req.body.image,"name":req.body.name,"position":req.body.position}};
      brands.updateOne(query, newvalues,(err,result)=>{
         if(err){
             res.json({result});
